@@ -1,9 +1,30 @@
 const { config } = require("vuepress-theme-hope");
 
 module.exports = config({
+  port: "8080",
   title: "JavaGuide",
   description: "Java学习&&面试指南",
+  //指定 vuepress build 的输出目录
   dest: "./dist",
+  // 是否开启默认预加载js
+  shouldPrefetch: (file, type) => false,
+  // webpack 配置 https://vuepress.vuejs.org/zh/config/#chainwebpack
+  chainWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      const dateTime = new Date().getTime();
+
+      // 清除js版本号
+      config.output.filename('assets/js/jg-[name].js?v=' + dateTime).end();
+      config.output.chunkFilename('assets/js/jg-[name].js?v=' + dateTime).end();
+
+      // 清除css版本号
+      config.plugin('mini-css-extract-plugin').use(require('mini-css-extract-plugin'), [{
+        filename: 'assets/css/[name].css?v=' + dateTime,
+        chunkFilename: 'assets/css/[name].css?v=' + dateTime
+      }]).end();
+
+    }
+  },
   head: [
     [
       "script",
@@ -22,7 +43,7 @@ module.exports = config({
     ],
     // 添加百度统计
     [
-      "script",{},
+      "script", {},
       `var _hmt = _hmt || [];
       (function() {
         var hm = document.createElement("script");
@@ -32,12 +53,14 @@ module.exports = config({
       })();`
     ]
   ],
-
+  locales: {
+    "/": {
+      lang: "zh-CN"
+    }
+  },
   themeConfig: {
-    logo: "/logo.png",
-    hostname: "https://javaguide.cn/",
-    author: "Guide哥",
-    repo: "https://github.com/Snailclimb/JavaGuide",
+    logo: "/logo.png", hostname: "https://javaguide.cn/", author: "Guide哥", repo: "https://github.com/Snailclimb/JavaGuide",
+    editLinks: true, docsDir: 'docs',
     nav: [
       { text: "Java面试指南", icon: "java", link: "/", },
       { text: "Java面试指北", icon: "java", link: "https://www.yuque.com/docs/share/f37fc804-bfe6-4b0d-b373-9c462188fec7?#%20%E3%80%8A%E3%80%8AJava%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8C%97%20%20%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%8A%80%E6%9C%AF%E7%AB%9E%E4%BA%89%E5%8A%9B%E3%80%8B%E3%80%8B", },
@@ -46,7 +69,8 @@ module.exports = config({
         items: [
           { text: "Java书单精选", icon: "book", link: "https://gitee.com/SnailClimb/awesome-cs" },
           { text: "Java学习路线", icon: "luxianchaxun", link: "https://zhuanlan.zhihu.com/p/379041500" },
-          { text: "Java开源项目精选", icon: "git", link: "https://gitee.com/SnailClimb/awesome-java" }
+          { text: "Java开源项目精选", icon: "git", link: "https://gitee.com/SnailClimb/awesome-java" },
+          { text: "Java技术文章精选集", icon: "star", link: "/high-quality-technical-articles/" }
         ],
       },
       { text: "IDEA指南", icon: "intellijidea", link: "/idea-tutorial/", },
@@ -64,40 +88,39 @@ module.exports = config({
       },
     ],
     sidebar: {
-      "/about-the-author/": [
-        "internet-addiction-teenager", "feelings-after-one-month-of-induction-training"
-      ],
       // 应该把更精确的路径放置在前边
+      "/about-the-author/": [
+        "internet-addiction-teenager", "feelings-after-one-month-of-induction-training", "feelings-of-half-a-year-from-graduation-to-entry",
+        "my-article-was-stolen-and-made-into-video-and-it-became-popular",
+      ],
       '/tools/': [
         {
-          title: "数据库",
-          icon: "database",
-          prefix: "database/",
-          collapsable: false,
+          title: "数据库", icon: "database", prefix: "database/", collapsable: false,
           children: ["CHINER", "DBeaver", "screw"]
         },
         {
-          title: "Git",
-          icon: "git",
-          prefix: "git/",
-          collapsable: false,
+          title: "Git", icon: "git", prefix: "git/", collapsable: false,
           children: ["git-intro", "github技巧"]
         },
         {
-          title: "Docker",
-          icon: "docker1",
-          prefix: "docker/",
-          collapsable: false,
+          title: "Docker", icon: "docker1", prefix: "docker/", collapsable: false,
           children: ["docker", "docker从入门到实战"]
         },
+      ],
+      '/high-quality-technical-articles/': [
+        {
+          title: "面试", icon: "mianshixinxi-02", prefix: "interview/", collapsable: false,
+          children: ["the-experience-and-thinking-of-an-interview-experienced-by-an-older-programmer", "technical-preliminary-preparation", "screen-candidates-for-packaging"],
+        },
+        {
+          title: "个人经历", icon: "zuozhe", prefix: "personal-experience/", collapsable: false,
+          children: ["two-years-of-back-end-develop--experience-in-didi&toutiao"]
+        }
       ],
       '/idea-tutorial/':
         [
           {
-            title: "IDEA小技巧",
-            icon: "creative",
-            prefix: "idea-tips/",
-            collapsable: false,
+            title: "IDEA小技巧", icon: "tips", prefix: "idea-tips/", collapsable: false,
             children: [
               "idea-refractor-intro",
               "idea-plug-in-development-intro",
@@ -105,10 +128,7 @@ module.exports = config({
             ]
           },
           {
-            title: "IDEA插件推荐",
-            icon: "plugin",
-            collapsable: false,
-            prefix: "idea-plugins/",
+            title: "IDEA插件推荐", icon: "chajian1", collapsable: false, prefix: "idea-plugins/",
             children: [
               "shortcut-key", "idea-themes", "improve-code", "interface-beautification",
               "camel-case", "code-glance", "code-statistic",
@@ -282,7 +302,7 @@ module.exports = config({
       }],
     },
     blog: {
-      intro: "/intro/",
+      intro: "/about-the-author/",
       sidebarDisplay: "mobile",
       links: {
         Zhihu: "https://www.zhihu.com/people/javaguide",
@@ -290,7 +310,6 @@ module.exports = config({
         Gitee: "https://gitee.com/SnailClimb",
       },
     },
-
     footer: {
       display: true,
       content: '<a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2020015769号-1</a>',

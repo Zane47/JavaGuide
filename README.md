@@ -1,7 +1,7 @@
-👏 重大更新！！！重磅！
+## 👏 重大更新！！！重磅！
 
 - JavaGuide 在线阅读版（新版，推荐👍）：https://javaguide.cn/
-- JavaGuide 在线阅读版（老版）:https://snailclimb.gitee.io/javaguide/#/
+- JavaGuide 在线阅读版（老版，部分链接已经无法访问）:https://snailclimb.gitee.io/javaguide/#/
 
 👉 [朋友开源的面试八股文系列](https://github.com/csguide-dabai/interview-guide)。
 
@@ -19,13 +19,12 @@
 </a>
 </p>
 <p align="center">
-  <a href="https://snailclimb.gitee.io/javaguide"><img src="https://img.shields.io/badge/阅读-read-brightgreen.svg" alt="阅读"></a>
-  <img src="https://img.shields.io/github/stars/Snailclimb/JavaGuide" alt="stars">
+  <a href="https://javaguide.cn/"><img src="https://img.shields.io/badge/阅读-read-brightgreen.svg" alt="阅读"></a>
+  <img src="https://img.shields.io/github/stars/Snailclimb/JavaGuide" alt="stars"/>
+  <img src="https://img.shields.io/github/forks/Snailclimb/JavaGuide" alt="forks"/>
+  <img src="https://img.shields.io/github/issues/Snailclimb/JavaGuide" alt="issues"/>
 </p>
-
-
 <h3 align="center">Sponsor</h3>
-
 <table>
   <tbody>
     <tr>
@@ -75,14 +74,14 @@
 
 JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8 ](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html) 和周志明老师的[《深入理解Java虚拟机（第3版）》](https://book.douban.com/subject/34907497/) （强烈建议阅读多遍！）。
 
-1. **[Java 内存区域](docs/java/jvm/内存区域.md)**
-2. **[JVM 垃圾回收](docs/java/jvm/jvm垃圾回收.md)**
-3. [JDK 监控和故障处理工具](docs/java/jvm/jdk监控和故障处理工具总结.md)
-4. [类文件结构](docs/java/jvm/类文件结构.md)
-5. **[类加载过程](docs/java/jvm/类加载过程.md)**
-6. [类加载器](docs/java/jvm/类加载器.md)
-7. **[【待完成】最重要的 JVM 参数总结（翻译完善了一半）](docs/java/jvm/jvm参数指南.md)**
-9. **[【加餐】大白话带你认识 JVM](docs/java/jvm/[加餐]大白话带你认识jvm.md)**
+1. **[Java 内存区域](https://javaguide.cn/java/jvm/jvm-garbage-collection/)**
+2. **[JVM 垃圾回收](https://javaguide.cn/java/jvm/jvm-garbage-collection/)**
+3. [JDK 监控和故障处理工具](https://javaguide.cn/java/jvm/jdk-monitoring-and-troubleshooting-tools/)
+4. [类文件结构](https://javaguide.cn/java/jvm/class-file-structure/)
+5. **[类加载过程](https://javaguide.cn/java/jvm/class-loading-process/)**
+6. [类加载器](https://javaguide.cn/java/jvm/classloader/)
+7. **[【待完成】最重要的 JVM 参数总结（翻译完善了一半）](https://javaguide.cn/java/jvm/jvm-parameters-intro/)**
+8. **[【加餐】大白话带你认识 JVM](https://javaguide.cn/java/jvm/jvm-intro/)**
 
 ### 新特性
 
@@ -100,14 +99,14 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8 ](https://docs.oracle
 
 ### 操作系统
 
-1. [操作系统常见问题总结！](docs/cs-basics/operating-system/basis.md)
-2. [后端程序员必备的 Linux 基础知识总结](docs/cs-basics/operating-system/linux.md)
-3. [Shell 编程入门](docs/cs-basics/operating-system/Shell.md)
+1. [操作系统常见问题总结！](docs/cs-basics/operating-system/操作系统常见面试题&知识点总结.md)
+2. [后端程序员必备的 Linux 基础知识总结](docs/cs-basics/operating-system/linux-intro.md)
+3. [Shell 编程入门](docs/cs-basics/operating-system/shell-intro.md)
 
 ### 网络
 
-1. [计算机网络常见面试题](docs/cs-basics/network/计算机网络.md)
-2. [计算机网络基础知识总结](docs/cs-basics/network/计算机网络知识总结.md)
+1. [计算机网络常见面试题](docs/cs-basics/network/计算机网络常见面试题.md)
+2. [谢希仁老师的《计算机网络》内容总结](docs/cs-basics/network/谢希仁老师的《计算机网络》内容总结.md)
 
 ### 数据结构
 
@@ -365,3 +364,11 @@ Dubbo 是一款国产的 RPC 框架，由阿里开源。相关阅读：
 - [搞懂异地多活，看这篇就够了](https://mp.weixin.qq.com/s/T6mMDdtTfBuIiEowCpqu6Q)
 - [四步构建异地多活](https://mp.weixin.qq.com/s/hMD-IS__4JE5_nQhYPYSTg)
 - [《从零开始学架构》— 28 | 业务高可用的保障：异地多活架构](http://gk.link/a/10pKZ)
+
+## 关于作者
+
+- [个人介绍 Q&A](https://javaguide.cn/about-the-author/)
+- [我曾经也是网瘾少年](https://javaguide.cn/about-the-author/internet-addiction-teenager/)
+- [入职培训一个月后的感受](https://javaguide.cn/about-the-author/feelings-after-one-month-of-induction-training/)
+- [从毕业到入职半年的感受](https://javaguide.cn/about-the-author/feelings-of-half-a-year-from-graduation-to-entry/)
+- [某培训机构盗我文章做成视频还上了B站热门](https://javaguide.cn/about-the-author/my-article-was-stolen-and-made-into-video-and-it-became-popular/)
